@@ -1,0 +1,130 @@
+---
+// src/components/sections/Products.astro
+// Sección de productos propios de VHAJ
+// Cada producto es una card con info + link externo
+
+const products = [
+  {
+    tag: 'Punto de venta',
+    name: 'VHAJ POS System',
+    description: 'Sistema punto de venta diseñado para minimarkets y tiendas. Gestiona inventario, ventas, clientes y caja — todo en la nube, sin instalaciones.',
+    features: [
+      'Gestión de inventario en tiempo real',
+      'Ventas y facturación',
+      'Reportes y analíticas',
+      'CRM de clientes',
+      'Usuarios y permisos',
+      'Caja y pagos',
+    ],
+    status: 'Beta',
+    statusColor: 'sky',
+    href: 'https://wa.me/573332382830',
+    gradient: 'from-[rgba(56,189,248,0.08)] to-[rgba(167,139,250,0.05)]',
+    accentColor: 'var(--sky)',
+    textButton: 'Más información',
+  },
+  {
+    tag: 'Finanzas personales',
+    name: 'Mapi Ant',
+    description: 'Controlador de gastos inteligente. Registra, categoriza y visualiza tus gastos para que tengas el control total de tu dinero.',
+    features: [
+      'Registro de gastos rápido',
+      'Categorización automática',
+      'Reportes visuales',
+      'Metas de ahorro',
+      'Historial completo',
+      'Alertas de presupuesto',
+    ],
+    status: 'Próximamente',
+    statusColor: 'violet',
+    href: 'https://mapi-ant.duckdns.org/',
+    gradient: 'from-[rgba(167,139,250,0.08)] to-[rgba(56,189,248,0.05)]',
+    accentColor: 'var(--violet)',
+    textButton: 'Ir al sitio',
+  },
+]
+---
+
+<section class="relative z-10 max-w-300 mx-auto px-5 sm:px-8 md:px-12 py-10 sm:py-24 md:py-32">
+
+  <!-- Header -->
+  <div class="mb-12 md:mb-16">
+    <p class="text-[11px] tracking-[2px] uppercase text-(--violet) font-medium mb-3">
+      Lo que construimos
+    </p>
+    <h1 class="font-['Syne'] font-bold leading-[1.1] tracking-tight text-3xl sm:text-4xl md:text-[42px] text-(--text) mb-4">
+      Nuestros productos
+    </h1>
+    <p class="text-sm sm:text-base text-(--muted) max-w-120 leading-[1.8]">
+      Soluciones que construimos para resolver problemas reales — disponibles para cualquier negocio o uso personal.
+    </p>
+  </div>
+
+  <!-- Grid de productos -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {products.map((product) => (
+      <div class={`group relative flex flex-col bg-linear-to-br ${product.gradient} border border-[rgba(167,139,250,0.12)] rounded-[20px] p-7 sm:p-8 transition-all duration-300 hover:border-[rgba(167,139,250,0.3)] hover:-translate-y-1`}>
+
+        <!-- Tag + Status -->
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-[11px] tracking-[1.5px] uppercase font-medium text-(--muted)">
+            {product.tag}
+          </span>
+          <span class={`text-[10px] font-medium px-2.5 py-1 rounded-full border
+            ${product.statusColor === 'sky'
+              ? 'bg-[rgba(56,189,248,0.1)] text-(--sky) border-[rgba(56,189,248,0.2)]'
+              : 'bg-[rgba(167,139,250,0.1)] text-(--violet) border-[rgba(167,139,250,0.2)]'
+            }`}>
+            {product.status}
+          </span>
+        </div>
+
+        <!-- Nombre -->
+        <h2 class="font-['Syne'] text-2xl sm:text-[26px] font-bold text-(--text) mb-3 tracking-tight">
+          {product.name}
+        </h2>
+
+        <!-- Descripción -->
+        <p class="text-[13px] sm:text-sm text-(--muted) leading-[1.8] mb-6">
+          {product.description}
+        </p>
+
+        <!-- Features -->
+        <ul class="flex flex-col gap-2.5 list-none mb-8">
+          {product.features.map((feature) => (
+            <li class="flex items-center gap-2.5 text-[13px] text-(--muted)">
+              <span class="feature-check shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+                style={`background: rgba(${product.statusColor === 'sky' ? '56,189,248' : '167,139,250'}, 0.1); border: 1px solid rgba(${product.statusColor === 'sky' ? '56,189,248' : '167,139,250'}, 0.25)`}>
+                <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 6l3 3 5-5" stroke={product.accentColor} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        <!-- CTA -->
+        <div class="mt-auto">
+          <a
+            href={product.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`inline-flex items-center gap-2 text-[13px] font-medium px-5 py-2.5 rounded-lg no-underline border transition-all duration-200
+              ${product.statusColor === 'sky'
+                ? 'text-(--sky) border-[rgba(56,189,248,0.25)] hover:bg-[rgba(56,189,248,0.08)] hover:border-[rgba(56,189,248,0.4)]'
+                : 'text-(--violet) border-[rgba(167,139,250,0.25)] hover:bg-[rgba(167,139,250,0.08)] hover:border-[rgba(167,139,250,0.4)]'
+              }`}
+          >
+            {product.textButton}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17L17 7M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    ))}
+  </div>
+
+</section>

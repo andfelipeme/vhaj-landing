@@ -1,0 +1,207 @@
+---
+// src/components/sections/Hero.astro
+// Sección principal de la landing — primera impresión de VHAJ
+// Incluye: eyebrow, título, descripción, CTAs y card de métricas
+---
+
+<section
+  class="relative z-10 w-full max-w-300 mx-auto px-5 sm:px-8 md:px-12 py-10 sm:py-24 md:py-32"
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-15 lg:gap-20 items-center">
+    <!-- Columna izquierda: Texto -->
+    <div class="hero-content flex flex-col items-start">
+      <!-- Eyebrow -->
+      <div
+        class="inline-flex items-center gap-2 text-[10px] sm:text-[11px] tracking-[1.5px] uppercase text-(--violet) font-medium mb-5 sm:mb-7 px-3 py-1 border border-[rgba(167,139,250,0.25)] rounded-full bg-[rgba(167,139,250,0.06)]"
+      >
+        <span
+          class="eyebrow-dot w-1.25 h-1.25 rounded-full bg-(--violet) shrink-0"
+        ></span>
+        Empresa de desarrollo de software
+      </div>
+
+      <!-- Título -->
+      <h1
+        class="font-['Syne'] font-extrabold leading-[1.05] tracking-[-1.5px] sm:tracking-[-2px] mb-4 sm:mb-6 text-[30px] sm:text-[38px] md:text-[32px] lg:text-[42px] xl:text-[48px] text-(--text)"
+      >
+        Construimos<br />
+        software que<br />
+        <span class="text-gradient">transforma.</span>
+      </h1>
+
+      <!-- Descripción -->
+      <p
+        class="text-[14px] sm:text-[15px] md:text-[16px] text-(--muted) leading-[1.7] sm:leading-[1.8] mb-7 sm:mb-9 font-light max-w-full sm:max-w-110"
+      >
+        En VHAJ desarrollamos soluciones digitales a medida — desde sistemas de
+        gestión hasta productos propios. Código que resuelve problemas reales.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+        <a
+          href="/services"
+          class="btn-gradient text-[13px] sm:text-[14px]
+        font-medium px-5 sm:px-6.5 py-3 sm:py-3.25 rounded-[10px]
+        text-white no-underline text-center transition-all duration-200
+        hover:opacity-90 hover:-translate-y-0.5"
+        >
+          Ver nuestros servicios
+        </a>
+        <a
+          href="/abouts"
+          class="text-[13px] sm:text-[14px] font-medium px-5
+        sm:px-6.5 py-3 sm:py-3.25 rounded-[10px] text-center
+        text-(--text) no-underline border border-[rgba(167,139,250,0.12)]
+        transition-all duration-200 hover:border-[rgba(167,139,250,0.35)]
+        hover:bg-[rgba(167,139,250,0.05)]"
+        >
+          Conocer el equipo →
+        </a>
+      </div>
+    </div>
+
+    <!-- Columna derecha: Card — oculta en móvil, visible desde lg -->
+    <div class="hero-card-wrap lg:flex items-center justify-center">
+      <div
+        class="w-full bg-(--dark2) border border-[rgba(167,139,250,0.12)] rounded-[20px] p-6 xl:p-7"
+      >
+        <!-- Card header -->
+        <div class="flex items-center justify-between mb-5">
+          <span class="font-['Syne'] text-[13px] font-semibold text-(--muted)">
+            Resumen de proyectos
+          </span>
+          <span
+            class="text-[10px] font-medium px-2 py-0.75 rounded-full bg-[rgba(56,189,248,0.1)] text-(--sky) border border-[rgba(56,189,248,0.2)]"
+          >
+            En vivo
+          </span>
+        </div>
+
+        <!-- Métricas -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+          <div
+            class="bg-(--dark3) border border-[rgba(167,139,250,0.12)] rounded-xl p-4"
+          >
+            <div
+              class="metric-value font-['Syne'] text-[22px] xl:text-[24px] font-bold"
+            >
+              12+
+            </div>
+            <div class="text-[11px] text-(--muted) mt-0.5">
+              Proyectos entregados
+            </div>
+          </div>
+          <div
+            class="bg-(--dark3) border border-[rgba(167,139,250,0.12)] rounded-xl p-4"
+          >
+            <div
+              class="metric-value font-['Syne'] text-[22px] xl:text-[24px] font-bold"
+            >
+              98%
+            </div>
+            <div class="text-[11px] text-(--muted) mt-0.5">Satisfacción</div>
+          </div>
+        </div>
+
+        <!-- Barras de progreso -->
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-2.5">
+            <span class="text-[11px] text-(--muted) w-15 shrink-0">Web</span>
+            <div
+              class="flex-1 h-1.5 bg-[rgba(255,255,255,0.05)] rounded-full overflow-hidden"
+            >
+              <div class="bar-fill h-full rounded-full" style="width: 85%">
+              </div>
+            </div>
+            <span class="text-[11px] text-(--muted) w-7 text-right">85%</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="text-[11px] text-(--muted) w-15 shrink-0"
+              >Sistemas</span
+            >
+            <div
+              class="flex-1 h-1.5 bg-[rgba(255,255,255,0.05)] rounded-full overflow-hidden"
+            >
+              <div class="bar-fill h-full rounded-full" style="width: 70%">
+              </div>
+            </div>
+            <span class="text-[11px] text-(--muted) w-7 text-right">70%</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="text-[11px] text-(--muted) w-15 shrink-0">UI/UX</span>
+            <div
+              class="flex-1 h-1.5 bg-[rgba(255,255,255,0.05)] rounded-full overflow-hidden"
+            >
+              <div class="bar-fill h-full rounded-full" style="width: 60%">
+              </div>
+            </div>
+            <span class="text-[11px] text-(--muted) w-7 text-right">60%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .text-gradient {
+        background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .btn-gradient {
+        background: linear-gradient(135deg, #a78bfa, #38bdf8);
+        box-shadow: 0 0 28px rgba(167, 139, 250, 0.25);
+      }
+
+      .btn-gradient:hover {
+        box-shadow: 0 0 45px rgba(167, 139, 250, 0.45);
+      }
+
+      .bar-fill {
+        background: linear-gradient(90deg, #a78bfa, #38bdf8);
+      }
+
+      .metric-value {
+        background: linear-gradient(135deg, #a78bfa, #38bdf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .eyebrow-dot {
+        animation: blink 2s ease-in-out infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      .hero-content {
+        animation: fadeUp 0.7s ease both;
+      }
+
+      .hero-card-wrap {
+        animation: fadeUp 0.7s 0.2s ease both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </div>
+</section>

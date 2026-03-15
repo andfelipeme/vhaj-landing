@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --violet: #a78bfa;
+  --sky: #38bdf8;
+  --dark: #07070f;
+  --dark2: #0d0d1c;
+  --dark3: #13132a;
+  --text: #f1f5f9;
+  --muted: #8892a4;
+  --border: rgba(167, 139, 250, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}

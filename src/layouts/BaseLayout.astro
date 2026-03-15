@@ -1,0 +1,100 @@
+---
+// src/layouts/BaseLayout.astro
+// Layout base que envuelve todas las páginas del sitio
+// Incluye Navbar y Footer globalmente — no repetir en cada página
+
+import "../styles/global.css";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "VHAJ — Software que transforma",
+  description = "Empresa de desarrollo de software. Web a medida, sistemas de gestión, diseño UI/UX y consultoría técnica.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Fondo global -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <div class="orb orb-3" aria-hidden="true"></div>
+
+    <!-- Navbar global -->
+    <Header />
+
+    <!-- Contenido de cada página -->
+    <main class="relative z-10">
+      <slot />
+    </main>
+
+    <!-- Footer global -->
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(167, 139, 250, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(167, 139, 250, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .orb-1 {
+    width: 600px;
+    height: 600px;
+    background: rgba(167, 139, 250, 0.07);
+    top: -200px;
+    right: -150px;
+  }
+
+  .orb-2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(56, 189, 248, 0.05);
+    bottom: 100px;
+    left: -150px;
+  }
+
+  .orb-3 {
+    width: 300px;
+    height: 300px;
+    background: rgba(167, 139, 250, 0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>

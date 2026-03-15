@@ -1,0 +1,215 @@
+---
+// src/components/sections/About.astro
+// Página nosotros — misión, visión, equipo y tecnologías
+
+const team = [
+  {
+    name: "Andres Felipe Forero Mendez",
+    role: "Desarrollador FullStack",
+    initials: "AF",
+    description:
+      "Especialista en desarrollo FullStack enfocado en convertir ideas en aplicaciones funcionales y escalables. Diseña desde la arquitectura del backend hasta la experiencia final en el frontend, asegurando soluciones eficientes y bien estructuradas.",
+    gradient: "from-[#a78bfa] to-[#38bdf8]",
+    social: {
+      linkedin: "https://linkedin.com/in/",
+      github: "https://github.com/",
+      instagram: "https://instagram.com/",
+    },
+  },
+  {
+    name: "Olbeimer Rodriguez Parra",
+    role: "Ciberseguridad y Gestión",
+    initials: "OR",
+    description:
+      "Encargado de la seguridad y la organización del sistema. Supervisa la protección de la información, la estabilidad de la infraestructura y garantiza que cada proceso funcione de forma segura, ordenada y confiable.",
+    gradient: "from-[#38bdf8] to-[#a78bfa]",
+    social: {
+      linkedin: "https://linkedin.com/in/",
+      github: "https://github.com/",
+      instagram: "https://instagram.com/",
+    },
+  },
+];
+
+const technologies = [
+  "Laravel",
+  "React",
+  "Astro",
+  "TypeScript",
+  "Tailwind",
+  "MySQL",
+  "Cloudflare",
+  "Bun",
+  "Hono",
+  "Inertia",
+  "Vite",
+  "Linux",
+];
+---
+
+<section
+  class="relative z-10 max-w-300 mx-auto px-5 sm:px-8 md:px-12 py-10 sm:py-24 md:py-32"
+>
+  <!-- Header -->
+  <div class="mb-16 md:mb-20">
+    <p
+      class="text-[11px] tracking-[2px] uppercase text-(--violet) font-medium mb-3"
+    >
+      Quiénes somos
+    </p>
+    <h1
+      class="font-['Syne'] font-bold leading-[1.1] tracking-tight text-3xl sm:text-4xl md:text-[42px] text-(--text) mb-6"
+    >
+      Dos personas.<br />
+      Un objetivo:<br />
+      <span class="text-gradient">software que funciona.</span>
+    </h1>
+    <p class="text-sm sm:text-base text-(--muted) max-w-130 leading-[1.8]">
+      Somos una empresa pequeña con hambre de construir cosas grandes. Sin
+      burocracia, sin intermediarios — solo código, diseño y resultados.
+    </p>
+  </div>
+
+  <!-- Misión y Visión -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20 md:mb-28">
+    <div
+      class="relative p-7 sm:p-8 rounded-[20px] border border-[rgba(167,139,250,0.12)] bg-[rgba(167,139,250,0.03)] overflow-hidden"
+    >
+      <div
+        class="absolute -top-10 -right-10 w-40 h-40 rounded-full blur-[60px] bg-[rgba(167,139,250,0.15)] pointer-events-none"
+      >
+      </div>
+      <p
+        class="text-[11px] tracking-[2px] uppercase text-(--violet) font-medium mb-4"
+      >
+        Misión
+      </p>
+      <p
+        class="font-['Syne'] text-lg sm:text-xl font-bold text-(--text) leading-normal"
+      >
+        Construir software que resuelva problemas reales de negocios
+        latinoamericanos — con tecnología de punta, diseño cuidado y código que
+        escala.
+      </p>
+    </div>
+    <div
+      class="relative p-7 sm:p-8 rounded-[20px] border border-[rgba(56,189,248,0.12)] bg-[rgba(56,189,248,0.03)] overflow-hidden"
+    >
+      <div
+        class="absolute -top-10 -right-10 w-40 h-40 rounded-full blur-[60px] bg-[rgba(56,189,248,0.12)] pointer-events-none"
+      >
+      </div>
+      <p
+        class="text-[11px] tracking-[2px] uppercase text-(--sky) font-medium mb-4"
+      >
+        Visión
+      </p>
+      <p
+        class="font-['Syne'] text-lg sm:text-xl font-bold text-(--text) leading-normal"
+      >
+        Ser la empresa de software de referencia en Latinoamérica para negocios
+        que quieren crecer digitalmente sin complicaciones.
+      </p>
+    </div>
+  </div>
+  <div class="mb-10">
+    <p
+      class="text-[11px] tracking-[2px] uppercase text-(--sky) font-medium mb-3"
+    >
+      Equipo
+    </p>
+    <h2
+      class="font-['Syne'] font-bold text-2xl sm:text-3xl text-(--text) tracking-tight"
+    >
+      Los que hacen posible todo esto
+    </h2>
+  </div>
+
+  <!-- Equipo -->
+  <div class="mb-20 md:mb-28">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        team.map((member) => (
+          <div class="group flex flex-col p-7 rounded-[20px] border border-[rgba(167,139,250,0.12)] bg-(--dark2) transition-all duration-300 hover:border-[rgba(167,139,250,0.3)] hover:-translate-y-1">
+            <div class="flex items-center gap-4 mb-5">
+                <div class={`w-14 h-14 rounded-[14px] bg-linear-to-br ${member.gradient} flex items-center justify-center shrink-0`}>
+                <span class="font-['Syne'] font-bold text-lg text-white">
+                    {member.initials}
+                </span>
+                </div>
+                <div>
+                <h3 class="font-['Syne'] font-bold text-[15px] text-(--text) leading-tight mb-1">
+                    {member.name}
+                </h3>
+                <span class="text-[12px] text-(--violet) font-medium">
+                    {member.role}
+                </span>
+                </div>
+            </div>
+
+            <p class="text-sm text-(--muted) leading-[1.7] mb-6">
+                {member.description}
+            </p>
+
+            <!-- Redes sociales -->
+            <div class="flex gap-2 mt-auto">
+
+                <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer"
+                class="social-btn" aria-label="LinkedIn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                </a>
+
+                <a href={member.social.github} target="_blank" rel="noopener noreferrer"
+                class="social-btn" aria-label="GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                </svg>
+                </a>
+
+                <a href={member.social.instagram} target="_blank" rel="noopener noreferrer"
+                class="social-btn" aria-label="Instagram">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+                </a>
+
+            </div>
+    </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Tecnologías -->
+  
+</section>
+
+<style>
+  .text-gradient {
+    background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--muted);
+  border: 1px solid rgba(167, 139, 250, 0.12);
+  background: transparent;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.social-btn:hover {
+  color: var(--text);
+  border-color: rgba(167, 139, 250, 0.35);
+  background: rgba(167, 139, 250, 0.06);
+}
+</style>

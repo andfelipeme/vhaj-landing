@@ -1,0 +1,79 @@
+---
+// src/components/sections/Services.astro
+// Sección de servicios que ofrece VHAJ
+// Los datos están en el frontmatter para fácil mantenimiento
+
+const services = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>`,
+    title: 'Desarrollo web a medida',
+    description: 'Sitios y aplicaciones web construidos con tecnología moderna. Rápidos, seguros y escalables desde el primer día.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3zM9 9h6m-6 4h6m-6 4h4"/></svg>`,
+    title: 'Sistemas de gestión',
+    description: 'ERP, CRM, POS y sistemas internos adaptados a tus procesos. Automatiza lo manual y enfócate en lo que importa.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M3 21a9 9 0 0 1 18 0"/></svg>`,
+    title: 'Diseño UI/UX',
+    description: 'Interfaces que los usuarios entienden y disfrutan. Diseñamos con propósito, no solo con estética.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`,
+    title: 'Consultoría técnica',
+    description: '¿No sabes por dónde empezar? Te ayudamos a elegir el stack, la arquitectura y el camino correcto para tu proyecto.',
+  },
+]
+---
+
+<section id="servicios" class="relative z-10 max-w-300 mx-auto px-5 sm:px-8 md:px-12 py-10 sm:py-24 md:py-32">
+
+  <!-- Header sección -->
+  <div class="mb-12 md:mb-16">
+    <p class="text-[11px] tracking-[2px] uppercase text-(--sky) font-medium mb-3">
+      Lo que hacemos
+    </p>
+    <h2 class="font-['Syne'] font-bold leading-[1.1] tracking-tight text-3xl sm:text-4xl md:text-[42px] text-(--text) mb-4">
+      Servicios diseñados<br class="hidden sm:block"/>
+      para crecer contigo
+    </h2>
+    <p class="text-sm sm:text-base text-(--muted) max-w-120 leading-[1.8]">
+      Desde una web hasta un sistema completo — construimos lo que tu negocio necesita.
+    </p>
+  </div>
+
+  <!-- Grid de servicios -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-[rgba(167,139,250,0.08)] border border-[rgba(167,139,250,0.08)] rounded-[20px] overflow-hidden">
+    {services.map((service) => (
+      <div class="group relative bg-(--dark2) p-8 md:p-9 transition-all duration-300 hover:bg-[rgba(167,139,250,0.04)]">
+
+        <!-- Icono -->
+        <div class="w-11 h-11 rounded-xl bg-[rgba(167,139,250,0.08)] border border-[rgba(167,139,250,0.15)] flex items-center justify-center text-(--violet) mb-5 transition-all duration-300 group-hover:bg-[rgba(167,139,250,0.15)] group-hover:border-[rgba(167,139,250,0.3)]">
+          <Fragment set:html={service.icon} />
+        </div>
+
+        <!-- Título -->
+        <h3 class="font-['Syne'] text-base sm:text-[17px] font-bold text-(--text) mb-3 tracking-tight">
+          {service.title}
+        </h3>
+
+        <!-- Descripción -->
+        <p class="text-[13px] sm:text-sm text-(--muted) leading-[1.7]">
+          {service.description}
+        </p>
+
+        <!-- Línea gradiente en hover — requiere pseudo elemento -->
+        <div class="service-line absolute bottom-0 left-0 h-px w-0 transition-all duration-500 group-hover:w-full"></div>
+      </div>
+    ))}
+  </div>
+
+</section>
+
+<style>
+  /* Gradiente línea inferior en hover — Tailwind no soporta gradiente en border */
+  .service-line {
+    background: linear-gradient(90deg, #a78bfa, #38bdf8);
+  }
+</style>
