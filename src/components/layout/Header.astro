@@ -10,12 +10,12 @@ const navLinks = [
   { label: "Nosotros", href: "/abouts" },
 ];
 
-const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+// const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 
-const isActive = (href: string) => {
-  const normalizedHref = href.replace(/\/$/, "") || "/";
-  return currentPath === normalizedHref;
-};
+// const isActive = (href: string) => {
+//   const normalizedHref = href.replace(/\/$/, "") || "/";
+//   return currentPath === normalizedHref;
+// };
 
 const iconWhatsapp = "https://api.iconify.design/mdi/whatsapp.svg";
 ---
@@ -91,12 +91,8 @@ const iconWhatsapp = "https://api.iconify.design/mdi/whatsapp.svg";
             <li>
               <a
                 href={link.href}
-                class={`nav-link text-[17px] no-underline tracking-wide transition-colors duration-200
-              ${
-                isActive(link.href)
-                  ? "text-(--text) nav-link--active"
-                  : "text-(--muted) hover:text-(--text)"
-              }`}
+                data-navlink
+                class="nav-link text-[17px] no-underline tracking-wide transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -163,12 +159,8 @@ const iconWhatsapp = "https://api.iconify.design/mdi/whatsapp.svg";
           <li>
             <a
               href={link.href}
-              class={`block px-3 py-2.5 text-[17px] no-underline rounded-lg transition-all duration-200
-              ${
-                currentPath === link.href
-                  ? "text-(--text) bg-[rgba(167,139,250,0.08)]"
-                  : "text-(--muted) hover:text-(--text) hover:bg-[rgba(167,139,250,0.06)]"
-              }`}
+              data-navlink
+              class="block px-3 py-2.5 text-[17px] no-underline rounded-lg transition-all duration-200"
             >
               {link.label}
             </a>
@@ -242,6 +234,15 @@ const iconWhatsapp = "https://api.iconify.design/mdi/whatsapp.svg";
     <script is:inline>
       const toggle = document.getElementById("menu-toggle");
       const menu = document.getElementById("mobile-menu");
+      const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+
+      document.querySelectorAll("[data-navlink]").forEach((link) => {
+        const href = link.getAttribute("href").replace(/\/$/, "") || "/";
+        if (href === currentPath) {
+          link.classList.remove("text-(--muted)");
+          link.classList.add("text-(--text)", "nav-link--active");
+        }
+      });
 
       toggle?.addEventListener("click", () => {
         const isOpen = menu?.classList.toggle("!flex");
