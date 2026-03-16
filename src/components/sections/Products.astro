@@ -19,6 +19,7 @@ const products = [
     status: 'Beta',
     statusColor: 'sky',
     href: 'https://wa.me/573332382830',
+    arial: "Contactar por WhatsApp para más información sobre VHAJ POS System",
     gradient: 'from-[rgba(56,189,248,0.08)] to-[rgba(167,139,250,0.05)]',
     accentColor: 'var(--sky)',
     textButton: 'Más información',
@@ -38,6 +39,7 @@ const products = [
     status: 'Próximamente',
     statusColor: 'violet',
     href: 'https://mapi-ant.duckdns.org/',
+    arial: "Ir al sitio de Mapi Ant",
     gradient: 'from-[rgba(167,139,250,0.08)] to-[rgba(56,189,248,0.05)]',
     accentColor: 'var(--violet)',
     textButton: 'Ir al sitio',
@@ -109,6 +111,7 @@ const products = [
           <a
             href={product.href}
             target="_blank"
+            aria-label={product.arial}
             rel="noopener noreferrer"
             class={`inline-flex items-center gap-2 text-[13px] font-medium px-5 py-2.5 rounded-lg no-underline border transition-all duration-200
               ${product.statusColor === 'sky'
